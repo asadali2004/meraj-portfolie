@@ -64,7 +64,41 @@ const Navbar = () => {
             exit={{ y: -20, opacity: 0 }}
             className="absolute top-14 left-0 w-full bg-white/60 backdrop-blur-2xl flex flex-col items-center py-4 space-y-4 md:hidden shadow-xl rounded-b-2xl"
           >
-            {/* ... (rest of the mobile menu code) ... */}
+            {["Home", "Introduction", "Mindmap", "Skills", "Projects", "Achievements", "Contacts"].map((item, index) => (
+              <li key={index}>
+                <Link
+                  to={item.toLowerCase().replace(/\s/g, "")}
+                  smooth={true}
+                  duration={500}
+                  className="bg-gradient-to-r from-green-100 to-lime-200 text-gray-700 px-5 py-2 rounded-full font-medium shadow-md hover:shadow-lg transition-shadow duration-300"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item}
+                </Link>
+              </li>
+            ))}
+            <li>
+              <Link
+                to="video"
+                smooth={true}
+                duration={500}
+                className="flex items-center bg-gradient-to-r from-orange-200 to-yellow-300 text-gray-700 px-5 py-2 rounded-full font-medium shadow-md hover:shadow-lg transition-shadow duration-300"
+                onClick={() => setIsOpen(false)}
+              >
+                <FaVideo className="mr-2" /> Video CV
+              </Link>
+            </li>
+            <li>
+              <a
+                href="/MerajNewCv.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-gradient-to-r from-blue-200 to-indigo-300 text-gray-700 px-5 py-2 rounded-full font-medium shadow-md hover:shadow-lg transition-shadow duration-300"
+                onClick={() => setIsOpen(false)}
+              >
+                My Resume
+              </a>
+            </li>
           </motion.ul>
         )}
       </AnimatePresence>
